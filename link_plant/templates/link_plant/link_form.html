@@ -1,0 +1,13 @@
+{% extends "link_plant/_base.html" %}
+{% load tailwind_filters %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+    <h1 class="text-4xl font-bold mb-4">Link Form</h1>
+    <hr class="my-4">
+    <form action="" method="POST">
+        {% csrf_token %}
+        {{ form|crispy }}
+        <button type="submit" class="inline-flex items-center bg-green-300 text-black border-0 py-2 px-6 focus:outline-none hover:bg-blue-600 rounded text-lg mt-4">Submit</button>
+    </form>
+{% endblock content %}
