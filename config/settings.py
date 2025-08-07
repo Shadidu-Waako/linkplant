@@ -39,7 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     # local apps
-    'link_plant'
+    'link_plant',
 ]
 
 MIDDLEWARE = [
