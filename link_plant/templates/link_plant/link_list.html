@@ -1,5 +1,36 @@
-<ul>
-    {% for link in object_list %}
-        <li>{{ link.text }}</li>
-    {% endfor %}
-</ul>
+{% extends "link_plant/_base.html" %}
+
+{% block content %}
+<h1 class="text-4xl text-center mb-10">My Links</h1>
+<div class="lg:w-3/4 w-full mx-auto overflow-auto">
+    <table class="table-auto w-full text-left whitespace-no-wrap">
+        <thead>
+            <tr>
+                <th class="px-4 py-3 title-font tracking-winder font-medium text-gray-900 text-sm bg-gray-100 rounded-tl rounded-bl">Text</th>
+                <th class="px-4 py-3 title-font tracking-winder font-medium text-gray-900 text-sm bg-gray-100">URL</th>
+                <th class="px-4 py-3 title-font tracking-winder font-medium text-gray-900 text-sm bg-gray-100">Profile</th>
+                <th class="px-4 py-3 title-font tracking-winder font-medium text-gray-900 text-sm bg-gray-100">Edit</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for link in object_list %}
+            <tr>
+                <td class="px-4 py-3">{{ link.text }}</td>
+                <td class="px-4 py-3">
+                    <a href="{{ link.url }}" target="_blank">
+                        {{ link.url }}
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M10 5v5m0 0v5m0-5h5m0-5h5m-5 0H5" />
+                        </svg>
+                    </a>
+                </td>
+                <td class="px-4 py-3">{{ link.profile.name }}</td>
+                <td class="px-4 py-3 underline text-blue-600"><a href="">Edit</a></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <p class="mt-6 my-2 w-full border rounded border-gray-400 text-center text-gray-600 py-2"> Add New +</p>
+</div>
+
+{% endblock content %}
