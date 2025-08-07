@@ -27,7 +27,7 @@ class Profile(models.Model):
         return self.name
 
 # Link table -> Text, url, profile
-class Links(models.Model):
+class Link(models.Model):
     text = models.CharField(max_length=100)
     url = models.URLField(max_length=200)
     profile = models.ForeignKey(Profile, on_delete=models.CASCADE, related_name='links')
