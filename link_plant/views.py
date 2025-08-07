@@ -1,7 +1,8 @@
 from django.urls import reverse_lazy
+from django.shortcuts import render, get_object_or_404
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView
 
-from .models import Link
+from .models import Link, Profile
 
 # Create your views here.
 class LinkListView(ListView):
@@ -24,3 +25,12 @@ class LinkDeleteView(DeleteView):
     model = Link
     success_url = reverse_lazy('link-list')
     # Template called model_confirm_delete.html -> link_confirm_delete.html
+
+def profile_view(request, profile_slug):
+    profile = get_object_or_404(Profile, slug=profile_slug)
+    links = profile.links.all()
+    context = {
+        'profile': profile,
+        'links': links,
+    }
+    return render(request, 'link_plant/profile_view.html', context)

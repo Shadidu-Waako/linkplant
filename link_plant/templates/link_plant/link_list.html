@@ -21,11 +21,18 @@
                     <a href="{{ link.url }}" target="_blank">
                         {{ link.url }}
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M10 5v5m0 0v5m0-5h5m0-5h5m-5 0H5" />
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 000 4h4a2 2 0 010 4H6" />
                         </svg>
                     </a>
                 </td>
-                <td class="px-4 py-3">{{ link.profile.name }}</td>
+                <td class="px-4 py-3">
+                    <a href="{% url 'profile-view' link.profile.slug %}" target="_blank">
+                        {{link.profile.name}}
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 inline" fill="none">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 000 4h4a2 2 0 010 4H6" />
+                        </svg>
+                    </a>
+                </td>
                 <td class="px-4 py-3 underline text-blue-600"><a href="{% url 'link-update' link.id%}">Edit</a></td>
                 <td class="px-4 py-3 underline text-red-600"><a href="{% url 'link-delete' link.id %}">Delete</a></td>
             </tr>
